@@ -1,0 +1,60 @@
+1. Hands-on - Python - String Methods
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+
+#
+# Complete the 'strmethod' function below.
+#
+# The function accepts following parameters:
+#  1. STRING para
+#  2. STRING spch1
+#  3. STRING spch2
+#  4. LIST li1
+#  5. STRING strf
+#
+
+def stringmethod(para, special1, special2, list1, strfind):
+    word1 = "".join(i for i in para if not i in special1)
+    rword2 = word1[69::-1]
+    print(rword2)
+    print(special2.join(i for i in rword2.replace(" ","")))
+    flag=0
+    for i in list1:
+        if not i in para:
+           print("Every string in  {} were not present".format(list1))
+           flag=1
+           break;
+    if flag==0:
+        print("Every string in  {} were present".format(list1))           
+    print(word1.split()[:20])
+    l=[]
+    for i in word1.split():
+        if i not in l:
+            if word1.split().count(i)<3:
+                l.append(i)
+    print(l[-20:])
+    print(word1.rindex(strfind))
+if __name__ == '__main__':
+    para = input()
+
+    spch1 = input()
+
+    spch2 = input()
+    
+    qw1_count = int(input().strip())
+
+    qw1 = []
+
+    for _ in range(qw1_count):
+        qw1_item = input()
+        qw1.append(qw1_item)
+
+    strf = input()
+
+    stringmethod(para, spch1, spch2, qw1, strf)
